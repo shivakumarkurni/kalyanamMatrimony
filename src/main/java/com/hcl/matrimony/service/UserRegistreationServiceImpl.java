@@ -6,7 +6,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hcl.matrimony.controller.UserRegistrationController;
 import com.hcl.matrimony.dto.RegistrationDto;
 import com.hcl.matrimony.entity.UserProfiles;
 import com.hcl.matrimony.repository.UserProfilesRepository;

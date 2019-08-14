@@ -1,6 +1,5 @@
 package com.hcl.matrimony.exception;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

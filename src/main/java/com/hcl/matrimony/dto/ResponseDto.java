@@ -1,8 +1,6 @@
 package com.hcl.matrimony.dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ResponseDto {
 	

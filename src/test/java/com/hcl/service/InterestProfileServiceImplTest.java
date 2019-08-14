@@ -16,6 +16,7 @@ import org.mockito.stubbing.Answer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.hcl.matrimony.dto.Estatus;
 import com.hcl.matrimony.dto.InterestCreationResponse;
 import com.hcl.matrimony.entity.InterestShown;
 import com.hcl.matrimony.entity.UserProfiles;
@@ -158,5 +159,32 @@ public class InterestProfileServiceImplTest {
  
 		
 	} 
+	
+	
+	@Test(expected = MatromonyException.class)
+	public void  interestProfilesUpadtePositive2() {
+		interestShown.setStatus("kkk");
+		interestShownList=new ArrayList<InterestShown>();
+		Mockito.when(interestShownRepository.findByFromMobileAndTargetMobile(userProfiles.getMobile(), userProfiles2.getMobile())).thenReturn(interestShownList);
+		Mockito.when(interestShownRepository.save(interestShown)).thenReturn(interestShown);
+		
+		
+		 interestProfileServiceImpl.interestProfilesUpadte(userProfiles.getMobile(), userProfiles2.getMobile(),"accept");
+ 
+		
+	} 
 
+	
+	@Test(expected = MatromonyException.class)
+	public void  interestProfilesUpadtePositive3() {
+		interestShown.setStatus(Estatus.REJECT.toString());
+		interestShownList=new ArrayList<InterestShown>();
+		Mockito.when(interestShownRepository.findByFromMobileAndTargetMobile(userProfiles.getMobile(), userProfiles2.getMobile())).thenReturn(interestShownList);
+		Mockito.when(interestShownRepository.save(interestShown)).thenReturn(interestShown);
+		
+		
+		 interestProfileServiceImpl.interestProfilesUpadte(userProfiles.getMobile(), userProfiles2.getMobile(),"accept");
+ 
+		
+	} 
 }

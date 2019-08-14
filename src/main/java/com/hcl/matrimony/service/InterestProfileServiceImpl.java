@@ -27,8 +27,11 @@ public class InterestProfileServiceImpl implements InterestProfileService {
 	InterestShownRepository interestShownRepository;
 	@Autowired
 	UserProfilesRepository userProfilesRepository;
+	
+	
+	//  interestProfiles for creating the interest from one user to onether user
 
-	@Override
+	@Override 
 	public ResponseEntity<InterestCreationResponse> interestProfiles(Long fromMobile, Long targetMobile) {
 		logger.info("InterestProfileServiceImpl--->interestProfiles enterd");
 		
@@ -48,9 +51,16 @@ public class InterestProfileServiceImpl implements InterestProfileService {
 		InterestCreationResponse interestCreationResponse = new InterestCreationResponse();
 		interestCreationResponse.setMessage("interest crated succsessfully");
 		interestCreationResponse.setStatusCode(HttpStatus.CREATED.value());
+		
+		logger.info("InterestProfileServiceImpl--->interestProfiles empleted");
+
 		return ResponseEntity.status(HttpStatus.CREATED).body(interestCreationResponse);
 
 	}
+	
+	
+	//  interestProfilesUpadte for accept or reject the request profile
+
 
 	@Override
 	public ResponseEntity<InterestCreationResponse> interestProfilesUpadte(Long fromMobile, Long targetMobile,
@@ -73,12 +83,14 @@ public class InterestProfileServiceImpl implements InterestProfileService {
 			if(status.equalsIgnoreCase(Estatus.REJECT.toString()))
 				interestShown.get(0).setStatus(Estatus.REJECT.toString());
 
-		
+		 
 			interestShownRepository.save(interestShown.get(0));
 
 		InterestCreationResponse interestCreationResponse = new InterestCreationResponse();
 		interestCreationResponse.setMessage(" status succsessfully updated");
 		interestCreationResponse.setStatusCode(HttpStatus.CREATED.value());
+
+		logger.info("InterestProfileServiceImpl--->interestProfilesUpadte completed");
 
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(interestCreationResponse);
 
