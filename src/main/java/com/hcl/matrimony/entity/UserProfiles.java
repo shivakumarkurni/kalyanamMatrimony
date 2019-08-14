@@ -28,4 +28,6 @@ public class UserProfiles {
 	private String gender;
 	private Long mobile;
 	private String occupation;
+	private String accountType;
+
 }
