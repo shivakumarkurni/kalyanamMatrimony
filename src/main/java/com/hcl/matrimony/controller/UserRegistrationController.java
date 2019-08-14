@@ -26,7 +26,7 @@ import com.hcl.matrimony.service.UserRegistrationService;
 @CrossOrigin(allowedHeaders={"*","*/"}, origins={"*","*/"})
 public class UserRegistrationController {
 	
-	
+	 
 	private final Logger LOGGER = LoggerFactory.getLogger(UserRegistrationController.class);
 
 	@Autowired

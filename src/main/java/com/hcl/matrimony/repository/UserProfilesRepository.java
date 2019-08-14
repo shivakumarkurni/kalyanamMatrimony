@@ -14,4 +14,6 @@ public interface UserProfilesRepository extends JpaRepository<UserProfiles, Long
 
   public	List<UserProfiles> findByMobile(Long mobile);
 
+public List<UserProfiles> findByGender(String string);
+
 }

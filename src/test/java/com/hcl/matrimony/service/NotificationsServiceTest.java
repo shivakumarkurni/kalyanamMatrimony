@@ -26,7 +26,7 @@ public class NotificationsServiceTest {
 	@Mock
 	NotificationsRepository notificationsRepository;
 
-	@Mock
+	@Mock 
 	UserProfilesRepository userProfilesRepository;
 
 	@InjectMocks
