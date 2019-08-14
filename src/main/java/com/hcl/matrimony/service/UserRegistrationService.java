@@ -1,5 +1,9 @@
 package com.hcl.matrimony.service;
 
-public class UserRegistrationService {
+import com.hcl.matrimony.dto.RegistrationDto;
+
+public interface UserRegistrationService {
+
+	String registration(RegistrationDto resitrationDto);
 
 }
