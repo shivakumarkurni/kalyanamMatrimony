@@ -40,6 +40,7 @@ public class NotificationsServiceTest {
 		List<ResponseDto> response = new ArrayList<>();
 
 		List<InterestShown> responseList = new ArrayList<>();
+		List<UserProfiles> userProfileslist = new ArrayList<>();
 
 		ResponseDto responseDto = new ResponseDto();
 
@@ -80,11 +81,11 @@ public class NotificationsServiceTest {
 		responseDto.setOccupation(userProfile.getOccupation());
 		
 		responseList.add(interests);
-		
+		userProfileslist.add(userProfile1);
 
 		Mockito.when(notificationsRepository.findByTargetMobile(Mockito.anyLong())).thenReturn(responseList);
 
-		Mockito.when(userProfilesRepository.findByMobile(Mockito.anyLong())).thenReturn(userProfile);
+		Mockito.when(userProfilesRepository.findByMobile(Mockito.anyLong())).thenReturn(userProfileslist);
 		response.add(responseDto);
 		
 		List<ResponseDto>actual=notificationsService.notifications(interests.getTargetMobile());
@@ -141,11 +142,12 @@ public class NotificationsServiceTest {
 		responseDto.setOccupation(userProfile.getOccupation());
 		
 		responseList.add(interests);
-		
+		List<UserProfiles> userProfileslist = new ArrayList<>();
 
+		userProfileslist.add(userProfile1);
 		Mockito.when(notificationsRepository.findByTargetMobile(Mockito.anyLong())).thenReturn(responseList);
 
-		Mockito.when(userProfilesRepository.findByMobile(Mockito.anyLong())).thenReturn(userProfile);
+		Mockito.when(userProfilesRepository.findByMobile(Mockito.anyLong())).thenReturn(userProfileslist);
 		response.add(responseDto);
 		
 		List<ResponseDto>actual=notificationsService.notifications(interests.getTargetMobile());

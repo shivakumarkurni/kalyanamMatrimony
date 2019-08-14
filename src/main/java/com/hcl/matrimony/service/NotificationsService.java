@@ -28,10 +28,10 @@ public class NotificationsService {
 
 		List<InterestShown> interestList = notificationsRepository.findByTargetMobile(mobileNo);
 
-		UserProfiles user = userProfilesRepository.findByMobile(mobileNo);
-		UserProfiles userProfile = null;
+		List<UserProfiles> user = userProfilesRepository.findByMobile(mobileNo);
+		List<UserProfiles> userProfile = null;
 
-		if (user.getAccountType().equalsIgnoreCase("Gold")) {
+		if (user.get(0).getAccountType().equalsIgnoreCase("Gold")) {
 
 			for (InterestShown interestShown : interestList) {
 
@@ -41,11 +41,11 @@ public class NotificationsService {
 
 				userProfile = userProfilesRepository.findByMobile(mobile);
 
-				responseDto.setName(userProfile.getName());
-				responseDto.setMobileNo(userProfile.getMobile());
-				responseDto.setOccupation(userProfile.getOccupation());
-				responseDto.setPlace(userProfile.getPlace());
-				responseDto.setDob(userProfile.getDateOfBirth());
+				responseDto.setName(userProfile.get(0).getName());
+				responseDto.setMobileNo(userProfile.get(0).getMobile());
+				responseDto.setOccupation(userProfile.get(0).getOccupation());
+				responseDto.setPlace(userProfile.get(0).getPlace());
+				responseDto.setDob(userProfile.get(0).getDateOfBirth());
 
 				responseList.add(responseDto);
 
@@ -63,9 +63,10 @@ public class NotificationsService {
 
 				userProfile = userProfilesRepository.findByMobile(mobile);
 
-				responseDto.setName(userProfile.getName());
-				responseDto.setOccupation(userProfile.getOccupation());
-
+				responseDto.setName(userProfile.get(0).getName());
+				responseDto.setOccupation(userProfile.get(0).getOccupation());
+				responseDto.setMobileNo(0L);
+				responseDto.setPlace("");
 				responseList.add(responseDto);
 			}
 
