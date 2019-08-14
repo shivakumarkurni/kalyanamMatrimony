@@ -20,7 +20,10 @@ public class InterestShown {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long interestId;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 27613fc2ca60b3c8f5b4471240e4e41c2f127a05
 	private Long fromMobile;
 	private Long targetMobile;
 	private LocalDateTime date;
