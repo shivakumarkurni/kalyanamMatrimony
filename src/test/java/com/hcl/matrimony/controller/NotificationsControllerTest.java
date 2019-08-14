@@ -38,7 +38,7 @@ public class NotificationsControllerTest {
 	@Test
 	public void testNotifications() throws Exception {
 
-		mockMvc.perform(MockMvcRequestBuilders.get("/matrimony/profiles/notifications/1").contentType(MediaType.APPLICATION_JSON)
+		mockMvc.perform(MockMvcRequestBuilders.get("/profiles/notifications/1").contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.ALL).content(asJsonString(Mockito.any()))).andExpect(status().isOk());
 
 	}
