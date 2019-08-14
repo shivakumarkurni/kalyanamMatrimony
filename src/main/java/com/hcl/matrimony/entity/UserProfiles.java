@@ -20,7 +20,7 @@ public class UserProfiles {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long userId;
-	
+
 	private String name;
 	private String password;
 	private LocalDate dateOfBirth;

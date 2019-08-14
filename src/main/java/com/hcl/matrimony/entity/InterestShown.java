@@ -20,9 +20,8 @@ public class InterestShown {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long interestId;
-	
-	private String fromMobile;
-	private String targetMobile;
+	private Long fromMobile;
+	private Long targetMobile;
 	private LocalDateTime date;
 	private String status;
 	
