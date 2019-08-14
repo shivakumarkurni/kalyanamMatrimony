@@ -27,16 +27,18 @@ import com.hcl.matrimony.service.UserRegistrationService;
 public class UserRegistrationController {
 	
 	
-	private final Logger logger = LoggerFactory.getLogger(UserRegistrationController.class);
+	private final Logger LOGGER = LoggerFactory.getLogger(UserRegistrationController.class);
 
 	@Autowired
 	InterestProfileService interestProfileService;
-
+	@Autowired
+	private UserRegistrationService userRegistrationService;
+	
 	@PostMapping("/profile/interest")
 	public ResponseEntity<InterestCreationResponse> interestProfiles(@RequestBody InterestCreationInput interestCreationInput) {
 		
-		logger.info(" enter into UserRegistrationController--> interestProfiles");
-		
+		LOGGER.info(" enter into UserRegistrationController--> interestProfiles");
+		 
 		
 		return interestProfileService.interestProfiles(interestCreationInput.getFromMobile(),
 				interestCreationInput.getTargetMobile());
@@ -49,14 +51,8 @@ public class UserRegistrationController {
 
 	}
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(UserRegistrationController.class);
-	@Autowired
-	private UserRegistrationService userRegistrationService;
 	
-	/**
-	 * @param resitrationDto
-	 * @return 
-	 */
+
 	@PostMapping("/profile")
 	public ResponseEntity<String> registeration(@RequestBody RegistrationDto resitrationDto){
 		
