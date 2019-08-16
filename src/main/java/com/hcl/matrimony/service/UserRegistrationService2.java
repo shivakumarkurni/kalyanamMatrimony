@@ -19,16 +19,17 @@ public class UserRegistrationService2 {
 	@Autowired
 	UserProfilesRepository userProfilesRepository;
 
-	public String userLogin(LoginDto loginDto) {
+	public String userLogin(LoginDto loginDto) { 
 		Long mobileNo = loginDto.getMobile();
 		String password = loginDto.getPassword();
 		List<UserProfiles> userProfiles2 = userProfilesRepository.findByMobile(mobileNo);
-		UserProfiles userProfiles = userProfiles2.get(0);
+ 
+		if (!userProfiles2.isEmpty()) {
+			UserProfiles userProfiles = userProfiles2.get(0);
 
-		if (userProfiles != null) {
 			if (userProfiles.getPassword().equals(password)) {
 				logger.info("************successfully login*************");
-				return "successfully login";
+				return "successfully login"; 
 			} else {
 				throw new MatromonyException("Incorrect MobileNo and Password");
 			}
@@ -77,7 +78,7 @@ public class UserRegistrationService2 {
 
 				profileDtoList.add(profileDto);
 			}
-		}
+		} 
 		return profileDtoList;
 	}
 
