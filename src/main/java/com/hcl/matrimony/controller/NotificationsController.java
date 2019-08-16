@@ -22,11 +22,12 @@ public class NotificationsController {
 
 	@Autowired 
 	NotificationsService notificationsService;
-	private final Logger LOGGER = LoggerFactory.getLogger(UserRegistrationController.class);
+	private final Logger logger = LoggerFactory.getLogger(UserRegistrationController.class);
 
 	@GetMapping("/profiles/notifications/{mobileNo}")
 	public ResponseEntity<List<ResponseDto>> notifications(@PathVariable Long mobileNo) {
 		
+		logger.info("NotificationsController--> notifications ");
 		return new ResponseEntity<>(notificationsService.notifications(mobileNo), HttpStatus.OK);
 
 	}
