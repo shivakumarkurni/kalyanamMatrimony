@@ -13,23 +13,40 @@ import com.hcl.matrimony.dto.ProfileDto;
 import com.hcl.matrimony.entity.UserProfiles;
 import com.hcl.matrimony.repository.UserProfilesRepository;
 
+/**
+ * @author Laxman
+ *
+ */
+
+/**
+ * In this class the user registration happens
+ *
+ */
+
 @Service
 public class UserRegistrationService2 {
 	private static final Logger logger = LoggerFactory.getLogger(UserRegistrationService.class);
 	@Autowired
 	UserProfilesRepository userProfilesRepository;
 
-	public String userLogin(LoginDto loginDto) { 
+	/**
+	 * @param LoginDto
+	 * 
+	 * return message with status code
+	 *
+	 */
+
+	public String userLogin(LoginDto loginDto) {
 		Long mobileNo = loginDto.getMobile();
 		String password = loginDto.getPassword();
 		List<UserProfiles> userProfiles2 = userProfilesRepository.findByMobile(mobileNo);
- 
+
 		if (!userProfiles2.isEmpty()) {
 			UserProfiles userProfiles = userProfiles2.get(0);
 
 			if (userProfiles.getPassword().equals(password)) {
 				logger.info("************successfully login*************");
-				return "successfully login"; 
+				return "successfully login";
 			} else {
 				throw new MatromonyException("Incorrect MobileNo and Password");
 			}
@@ -37,10 +54,16 @@ public class UserRegistrationService2 {
 			throw new MatromonyException("User Mobile No is not Registered");
 		}
 	}
+	
+	/**
+	 * In this method we are getting all the list of profiles
+	 *
+	 */
+
 
 	public List<ProfileDto> getListOfProfile(Long mobileNo) {
 		List<UserProfiles> userProfiles3 = userProfilesRepository.findByMobile(mobileNo);
-		UserProfiles userProfiles= userProfiles3.get(0);
+		UserProfiles userProfiles = userProfiles3.get(0);
 
 		String gender = userProfiles.getGender();
 		logger.info("************gender************:" + gender);
@@ -78,7 +101,7 @@ public class UserRegistrationService2 {
 
 				profileDtoList.add(profileDto);
 			}
-		} 
+		}
 		return profileDtoList;
 	}
 

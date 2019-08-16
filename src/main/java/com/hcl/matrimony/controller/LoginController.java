@@ -13,16 +13,33 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hcl.matrimony.dto.LoginDto;
 import com.hcl.matrimony.service.UserRegistrationService2;
 
-@CrossOrigin(allowedHeaders= {"*","*/"},origins= {"*","*/"})
+/**
+ * @author Vijay
+ *
+ */
+
+@CrossOrigin(allowedHeaders = { "*", "*/" }, origins = { "*", "*/" })
 @RestController
+
+/**
+ * User Logging class
+ *
+ */
+
 public class LoginController {
-	 private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	@Autowired
 	UserRegistrationService2 userRegistrationService2;
+
+	/**
+	 * This method will be called when the user tried to logged in with user name
+	 * and password
+	 *
+	 */
 
 	@PostMapping("/profile/login")
 	public ResponseEntity<String> userLogin(@RequestBody LoginDto loginDto) {
 		logger.info("********userLogin******");
 		return new ResponseEntity<>(userRegistrationService2.userLogin(loginDto), HttpStatus.OK);
-	} 
+	}
 }

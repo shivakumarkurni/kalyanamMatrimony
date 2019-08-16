@@ -18,6 +18,16 @@ import com.hcl.matrimony.entity.UserProfiles;
 import com.hcl.matrimony.repository.InterestShownRepository;
 import com.hcl.matrimony.repository.UserProfilesRepository;
 
+/**
+ * @author Sai Ram
+ *
+ */
+
+/*
+ * The InterestProfileServiceImpl class describes the showing the interests and
+ * accepting or rejecting the requests and searching profiles based on place
+ * occupation and gender
+ */
 @Service
 public class InterestProfileServiceImpl implements InterestProfileService {
 
@@ -29,6 +39,17 @@ public class InterestProfileServiceImpl implements InterestProfileService {
 	UserProfilesRepository userProfilesRepository;
 
 	// interestProfiles for creating the interest from one user to onether user
+
+	/**
+	 * @param source mobileNo,target mobileNo
+	 *
+	 */
+
+	/**
+	 * In this method we are creating interests i.e if any user is interested in
+	 * other profiles
+	 *
+	 */
 
 	@Override
 	public ResponseEntity<InterestCreationResponse> interestProfiles(Long fromMobile, Long targetMobile) {
@@ -58,6 +79,11 @@ public class InterestProfileServiceImpl implements InterestProfileService {
 	}
 
 	// interestProfilesUpadte for accept or reject the request profile
+
+	/**
+	 * In this method we are updating the interests i.e accept or reject
+	 *
+	 */
 
 	@Override
 	public ResponseEntity<InterestCreationResponse> interestProfilesUpadte(Long fromMobile, Long targetMobile,
@@ -90,6 +116,12 @@ public class InterestProfileServiceImpl implements InterestProfileService {
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(interestCreationResponse);
 
 	}
+
+	/**
+	 * In this method we are searching the profiles based on mobile occupation or
+	 * place and gender
+	 *
+	 */
 
 	@Override
 	public Object searchProfile(long mobile, String place, String occupation) {

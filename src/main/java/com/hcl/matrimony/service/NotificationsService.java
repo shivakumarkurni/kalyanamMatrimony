@@ -1,6 +1,7 @@
 package com.hcl.matrimony.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -14,6 +15,12 @@ import com.hcl.matrimony.entity.UserProfiles;
 import com.hcl.matrimony.repository.NotificationsRepository;
 import com.hcl.matrimony.repository.UserProfilesRepository;
 
+/**
+ * @author Shiva
+ *
+ */
+
+//Notifying the user if any body showed interest
 @Service
 public class NotificationsService {
 
@@ -24,6 +31,11 @@ public class NotificationsService {
 	UserProfilesRepository userProfilesRepository;
 
 	private final Logger logger = LoggerFactory.getLogger(NotificationsService.class);
+	
+	/**
+	 * @param mobileNo
+	 * return ResponseDTO
+	 */
 
 	// notifications requested profiles notification
 	public List<ResponseDto> notifications(Long mobileNo) {
@@ -78,9 +90,8 @@ public class NotificationsService {
 			}
 
 		}
-		
-		logger.info("NotificationsService--->notifications complete");
 
+		logger.info("NotificationsService--->notifications complete");
 
 		return responseList;
 

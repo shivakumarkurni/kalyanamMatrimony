@@ -23,41 +23,54 @@ import com.hcl.matrimony.service.UserRegistrationService;
  * 
  */
 @RestController
-@CrossOrigin(allowedHeaders={"*","*/"}, origins={"*","*/"})
+@CrossOrigin(allowedHeaders = { "*", "*/" }, origins = { "*", "*/" })
 public class UserRegistrationController {
-	
-	 
+
 	private final Logger logger = LoggerFactory.getLogger(UserRegistrationController.class);
 
 	@Autowired
 	InterestProfileService interestProfileService;
 	@Autowired
 	private UserRegistrationService userRegistrationService;
+
+	/**
+	 * called when the user is interested in other profiles
+	 *
+	 */
 	
 	@PostMapping("/profile/interest")
-	public ResponseEntity<InterestCreationResponse> interestProfiles(@RequestBody InterestCreationInput interestCreationInput) {
-		
+	public ResponseEntity<InterestCreationResponse> interestProfiles(
+			@RequestBody InterestCreationInput interestCreationInput) {
+
 		logger.info(" enter into UserRegistrationController--> interestProfiles");
-		 
-		
+
 		return interestProfileService.interestProfiles(interestCreationInput.getFromMobile(),
 				interestCreationInput.getTargetMobile());
 
 	}
-	
+
+	/**
+	 * Called when user accept or reject the requests
+	 *
+	 */
 	@PutMapping("/profile/interest")
-	public ResponseEntity<InterestCreationResponse> interestProfilesUpdate(@RequestBody InterestStatusUpdation interestStatusUpdation) {
-		return interestProfileService.interestProfilesUpadte(interestStatusUpdation.getFromMobile(), interestStatusUpdation.getTargetMobile(), interestStatusUpdation.getStatus());
+	public ResponseEntity<InterestCreationResponse> interestProfilesUpdate(
+			@RequestBody InterestStatusUpdation interestStatusUpdation) {
+		return interestProfileService.interestProfilesUpadte(interestStatusUpdation.getFromMobile(),
+				interestStatusUpdation.getTargetMobile(), interestStatusUpdation.getStatus());
 
 	}
 
-	
+	/**
+	 * Called when user trying to register
+	 *
+	 */
 
 	@PostMapping("/profile")
-	public ResponseEntity<String> registeration(@RequestBody RegistrationDto resitrationDto){
-		
-		logger.error(" UserRegistrationController :: "+resitrationDto);
-		
+	public ResponseEntity<String> registeration(@RequestBody RegistrationDto resitrationDto) {
+
+		logger.error(" UserRegistrationController :: " + resitrationDto);
+
 		return new ResponseEntity<>(userRegistrationService.registration(resitrationDto), HttpStatus.CREATED);
 	}
 }

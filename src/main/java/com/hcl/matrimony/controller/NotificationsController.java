@@ -15,18 +15,29 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hcl.matrimony.dto.ResponseDto;
 import com.hcl.matrimony.service.NotificationsService;
 
+/**
+ * @author Shiva
+ *
+ */
+
 @RestController
-@CrossOrigin(allowedHeaders= {"*","*/"},origins= {"*","*/"})
- 
+@CrossOrigin(allowedHeaders = { "*", "*/" }, origins = { "*", "*/" })
+
+/**
+ * This class gets the request when any user is interested in any other
+ * profile
+ *
+ */
+
 public class NotificationsController {
 
-	@Autowired 
+	@Autowired
 	NotificationsService notificationsService;
 	private final Logger logger = LoggerFactory.getLogger(UserRegistrationController.class);
 
 	@GetMapping("/profiles/notifications/{mobileNo}")
 	public ResponseEntity<List<ResponseDto>> notifications(@PathVariable Long mobileNo) {
-		
+
 		logger.info("NotificationsController--> notifications ");
 		return new ResponseEntity<>(notificationsService.notifications(mobileNo), HttpStatus.OK);
 

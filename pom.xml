@@ -94,6 +94,12 @@
 			<plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
+            <configuration>
+                        <excludes>
+                            <!-- Exclude model classes (POJO's) -->
+                            <exclude>**/patternA/**/*.class</exclude>
+                        </excludes>
+                    </configuration>
             <version>0.8.0</version>
             <executions>
                 <execution>
