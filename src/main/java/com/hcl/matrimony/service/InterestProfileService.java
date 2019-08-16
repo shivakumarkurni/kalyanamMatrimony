@@ -9,4 +9,6 @@ public interface InterestProfileService {
 	
 	public ResponseEntity<InterestCreationResponse> interestProfilesUpadte(Long fromMobile, Long targetMobile, String status) ;
 
+	public Object searchProfile(long mobile, String place, String occupation);
+
 }
