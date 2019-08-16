@@ -37,7 +37,7 @@ public class UserRegistrationController {
 	 * called when the user is interested in other profiles
 	 *
 	 */
-	
+
 	@PostMapping("/profile/interest")
 	public ResponseEntity<InterestCreationResponse> interestProfiles(
 			@RequestBody InterestCreationInput interestCreationInput) {
@@ -54,8 +54,13 @@ public class UserRegistrationController {
 	 *
 	 */
 	@PutMapping("/profile/interest")
+
+
 	public ResponseEntity<InterestCreationResponse> interestProfilesUpdate(
 			@RequestBody InterestStatusUpdation interestStatusUpdation) {
+		logger.info(" enter into UserRegistrationController--> interestProfilesUpdate",
+				interestStatusUpdation.getFromMobile(), interestStatusUpdation.getStatus());
+
 		return interestProfileService.interestProfilesUpadte(interestStatusUpdation.getFromMobile(),
 				interestStatusUpdation.getTargetMobile(), interestStatusUpdation.getStatus());
 

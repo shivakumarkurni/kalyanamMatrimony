@@ -99,7 +99,7 @@ public class UserRegistrationControllerTest {
 
 	}
 
-	
+	 
 	@Test
 	public void profile() throws Exception {
 

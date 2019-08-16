@@ -125,7 +125,11 @@ public class NotificationsServiceTest {
 		userProfile1.setOccupation("employee");
 		userProfile1.setGender("male");
 		userProfile1.setDateOfBirth(LocalDate.now());
+
 		userProfile1.setAccountType("Free");
+
+		userProfile1.setAccountType("free");
+
 
 		InterestShown interests = new InterestShown();
 
