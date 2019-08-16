@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.stubbing.Answer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -27,7 +26,7 @@ import com.hcl.matrimony.service.MatromonyException;
 
 @RunWith(SpringRunner.class)
 public class InterestProfileServiceImplTest {
-
+ 
 	@InjectMocks
 	InterestProfileServiceImpl interestProfileServiceImpl;
 	@Mock
@@ -67,7 +66,7 @@ public class InterestProfileServiceImplTest {
 		userProfiles.setOccupation("working");
 		userProfiles.setPassword("1234");
 		userProfiles.setUserId(1L);
-		
+		 
 		userProfiles2=new UserProfiles();
 		userProfiles2.setAccountType("gold");
 		userProfiles2.setDateOfBirth(LocalDate.now());
@@ -169,7 +168,7 @@ public class InterestProfileServiceImplTest {
 		Mockito.when(interestShownRepository.save(interestShown)).thenReturn(interestShown);
 		
 		
-		 interestProfileServiceImpl.interestProfilesUpadte(userProfiles.getMobile(), userProfiles2.getMobile(),"accept");
+		 interestProfileServiceImpl.interestProfilesUpadte(userProfiles.getMobile(), userProfiles2.getMobile(),"kk");
  
 		
 	} 
@@ -181,10 +180,39 @@ public class InterestProfileServiceImplTest {
 		interestShownList=new ArrayList<InterestShown>();
 		Mockito.when(interestShownRepository.findByFromMobileAndTargetMobile(userProfiles.getMobile(), userProfiles2.getMobile())).thenReturn(interestShownList);
 		Mockito.when(interestShownRepository.save(interestShown)).thenReturn(interestShown);
-		
-		
 		 interestProfileServiceImpl.interestProfilesUpadte(userProfiles.getMobile(), userProfiles2.getMobile(),"accept");
  
 		
 	} 
+	
+	@Test
+	public void  searchProfile(){ 
+		Mockito.when(userProfilesRepository.findByMobile(userProfiles.getMobile())).thenReturn(userProfileslist);
+		Mockito.when(userProfilesRepository.findByPlaceAndOccupationAndGenderNot(userProfiles.getPlace(), userProfiles.getOccupation(),userProfiles.getGender())).thenReturn(userProfileslist);
+		Mockito.when(userProfilesRepository.findByPlaceAndGenderNot(userProfiles.getPlace(), userProfiles.getGender())).thenReturn(userProfileslist);
+		Mockito.when(userProfilesRepository.findByOccupationAndGenderNot(userProfiles.getOccupation(), userProfiles.getGender())).thenReturn(userProfileslist);
+		Mockito.when(userProfilesRepository.findByGenderNot(userProfiles.getGender())).thenReturn(userProfileslist);
+		Object actual = interestProfileServiceImpl.searchProfile(userProfiles.getMobile(), userProfiles.getPlace(), userProfiles.getOccupation());
+		Assert.assertEquals(actual, actual);
+	}
+	@Test
+	public void  searchProfileNullOccupation(){ 
+		Mockito.when(userProfilesRepository.findByMobile(userProfiles.getMobile())).thenReturn(userProfileslist);
+		Mockito.when(userProfilesRepository.findByPlaceAndOccupationAndGenderNot(userProfiles.getPlace(), userProfiles.getOccupation(),userProfiles.getGender())).thenReturn(userProfileslist);
+		Mockito.when(userProfilesRepository.findByPlaceAndGenderNot(userProfiles.getPlace(), userProfiles.getGender())).thenReturn(userProfileslist);
+		Mockito.when(userProfilesRepository.findByOccupationAndGenderNot(userProfiles.getOccupation(), userProfiles.getGender())).thenReturn(userProfileslist);
+		Mockito.when(userProfilesRepository.findByGenderNot(userProfiles.getGender())).thenReturn(userProfileslist);
+		Object actual = interestProfileServiceImpl.searchProfile(userProfiles.getMobile(), userProfiles.getPlace(), null);
+		Assert.assertEquals(actual, actual);
+	}
+	@Test
+	public void  searchProfileNullPlace(){ 
+		Mockito.when(userProfilesRepository.findByMobile(userProfiles.getMobile())).thenReturn(userProfileslist);
+		Mockito.when(userProfilesRepository.findByPlaceAndOccupationAndGenderNot(userProfiles.getPlace(), userProfiles.getOccupation(),userProfiles.getGender())).thenReturn(userProfileslist);
+		Mockito.when(userProfilesRepository.findByPlaceAndGenderNot(userProfiles.getPlace(), userProfiles.getGender())).thenReturn(userProfileslist);
+		Mockito.when(userProfilesRepository.findByOccupationAndGenderNot(userProfiles.getOccupation(), userProfiles.getGender())).thenReturn(userProfileslist);
+		Mockito.when(userProfilesRepository.findByGenderNot(userProfiles.getGender())).thenReturn(userProfileslist);
+		Object actual = interestProfileServiceImpl.searchProfile(userProfiles.getMobile(), null, userProfiles.getOccupation());
+		Assert.assertEquals(actual, actual);
+	}
 }

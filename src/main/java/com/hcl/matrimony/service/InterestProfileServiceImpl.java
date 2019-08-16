@@ -99,7 +99,7 @@ public class InterestProfileServiceImpl implements InterestProfileService {
 		Object returnObject = "No recors found for matching profile.";
 		UserProfiles userProfiles = userProfilesRepository.findByMobile(mobile).get(0);
 		List<UserProfiles> list = null;
-		if (userProfiles != null) {
+		if (userProfiles != null) { 
 			if (place != null && occupation != null) {
 				list = userProfilesRepository.findByPlaceAndOccupationAndGenderNot(place, occupation,
 						userProfiles.getGender());

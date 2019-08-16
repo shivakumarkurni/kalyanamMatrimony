@@ -47,6 +47,8 @@ public class UserRegistrationController {
 	
 	@PutMapping("/profile/interest")
 	public ResponseEntity<InterestCreationResponse> interestProfilesUpdate(@RequestBody InterestStatusUpdation interestStatusUpdation) {
+		logger.info(" enter into UserRegistrationController--> interestProfilesUpdate", interestStatusUpdation.getFromMobile(),interestStatusUpdation.getStatus());
+
 		return interestProfileService.interestProfilesUpadte(interestStatusUpdation.getFromMobile(), interestStatusUpdation.getTargetMobile(), interestStatusUpdation.getStatus());
 
 	}

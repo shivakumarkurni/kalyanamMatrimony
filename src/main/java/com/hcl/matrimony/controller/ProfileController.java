@@ -44,7 +44,7 @@ public class ProfileController {
 	@GetMapping("/profiles/{mobile}/interest/")
 	public ResponseEntity<Object> searchProfile(@PathVariable("mobile") long mobile, @RequestParam(value="place", required=false) String place, @RequestParam(value="occupation", required=false) String occupation ){
 		
-		LOGGER.info("SearchProfileController :: searchProfile"+mobile+", "+place+", "+occupation);
+		LOGGER.info("SearchProfileController :: searchProfile",mobile,place,occupation);
 		
 		return new ResponseEntity<>(interestProfileService.searchProfile(mobile, place, occupation), HttpStatus.OK);
 	}
