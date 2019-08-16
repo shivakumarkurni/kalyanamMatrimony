@@ -56,7 +56,7 @@ public class NotificationsService {
 
 				responseList.add(responseDto);
 
-			}
+			} 
 
 		}
 
