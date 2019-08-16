@@ -23,6 +23,6 @@ public class LoginController {
 	@PostMapping("/profile/login")
 	public ResponseEntity<String> userLogin(@RequestBody LoginDto loginDto) {
 		logger.info("********userLogin******");
-		return new ResponseEntity<String>(userRegistrationService2.userLogin(loginDto), HttpStatus.OK);
+		return new ResponseEntity<>(userRegistrationService2.userLogin(loginDto), HttpStatus.OK);
 	} 
 }

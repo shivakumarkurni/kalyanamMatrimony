@@ -29,9 +29,9 @@ public class ProfileController {
 	private InterestProfileService interestProfileService;
 
 	@GetMapping("/profile/{MobileNo}")
-	public List<ProfileDto> getListOfProfile(@PathVariable("MobileNo") Long MobileNo) {
+	public List<ProfileDto> getListOfProfile(@PathVariable("mobileNo") Long mobileNo) {
 		LOGGER.info("******success****");
-		return userRegistrationService2.getListOfProfile(MobileNo);
+		return userRegistrationService2.getListOfProfile(mobileNo);
 
 	}
 	
